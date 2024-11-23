@@ -1,0 +1,3 @@
+## Rust!! Rust!! Rust!!
+
+I have this feeling of learning new language. Ok I already know Python, C. I see this language as a light because like my Previous languages Python and C I am not creative in those languages. (reason Tutorial Hell leads to died creativity). Whats the discussion here. Now from here, in this language I want to follow their documentation and github (for understanding code and open source contribution). I also like to follow this process same with Python and C. So let's see.
