@@ -12,31 +12,39 @@ fn main() {
     // gen_range(start..=stop) 
     let secret_number = rand::thread_rng().gen_range(1..=100);
 
-    println!("The secret number is: {secret_number}");
-    println!("Please input your guess: ");
+    loop {
+        println!("Please input your guess: ");
 
-    // all variables starts with let
-    // mut is wheter the variable is mutable of immutable.
-    // guess is name of the variable
-    // String::new() creates empty new instance of type string.
-    let mut guess = String::new();
-    io::stdin()
-        // Return: Result -> (Ok and Err)
-        // Ok: Operation successful
-        // Err: Operation failed -> Why the operation failed
-        .read_line(&mut guess)
-        // Will cause the program to crash and display the message.
-        .expect("Failed to read the line.");
+        // all variables starts with let
+        // mut is wheter the variable is mutable of immutable.
+        // guess is name of the variable
+        // String::new() creates empty new instance of type string.
+        let mut guess = String::new();
+        io::stdin()
+            // Return: Result -> (Ok and Err)
+            // Ok: Operation successful
+            // Err: Operation failed -> Why the operation failed
+            .read_line(&mut guess)
+            // Will cause the program to crash and display the message.
+            .expect("Failed to read the line.");
 
-    // Shadowing the variable
-    let guess: u32 = guess.trim().parse().expect("Please type a number.");
+        // Shadowing the variable
+        let guess: u32 = match guess.trim().parse() {
+            // handling the error
+            Ok(num) => num,
+            Err(_) => continue,
+        };
 
-    // Greet them and exit.
-    println!("You guessed: {}", guess);
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small"),
-        Ordering::Greater => println!("Too big"),
-        Ordering::Equal => println!("You win!"),
+        // Greet them and exit.
+        println!("You guessed: {}", guess);
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small"),
+            Ordering::Greater => println!("Too big"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            }
+        }
     }
 }
 
