@@ -1,5 +1,6 @@
 // Use the input/output library from standard library.
 use std::io;
+use std::cmp::Ordering;
 use rand::Rng;
 
 // Explaination of what above code does. Let's move on.
@@ -27,8 +28,16 @@ fn main() {
         // Will cause the program to crash and display the message.
         .expect("Failed to read the line.");
 
+    // Shadowing the variable
+    let guess: u32 = guess.trim().parse().expect("Please type a number.");
+
     // Greet them and exit.
     println!("You guessed: {}", guess);
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small"),
+        Ordering::Greater => println!("Too big"),
+        Ordering::Equal => println!("You win!"),
+    }
 }
 
 // Check the input is in expected form
