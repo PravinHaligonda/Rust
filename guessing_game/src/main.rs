@@ -1,10 +1,17 @@
 // Use the input/output library from standard library.
 use std::io;
+use rand::Rng;
 
 // Explaination of what above code does. Let's move on.
 fn main() {
     // Ask for user input
     println!("Guess the number");
+
+    // thread_rng() function gives us the particular random number generator
+    // gen_range(start..=stop) 
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!("The secret number is: {secret_number}");
     println!("Please input your guess: ");
 
     // all variables starts with let
