@@ -20,15 +20,14 @@ fn main() {
     println!("P: {p}");
     let p = p + 1;
     println!("P: {p}");
-
     {
         let p = p + 3;
         println!("The value of p in inner scope is {p}");
     }
 
-    let mut m = 2;
+    let m = 2;
     println!("M: {m}");
-    let mut m = m + 2;
+    let m = m + 2;
     println!("M2: {m}");
 }
 
